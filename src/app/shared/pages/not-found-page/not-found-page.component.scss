@@ -1,0 +1,23 @@
+.app-not-found {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+
+  &-card {
+    padding: 3rem 2rem;
+    max-width: 600px;
+
+    &-title {
+      display: flex;
+      align-items: center;
+      margin-bottom: 1rem;
+
+      mat-icon {
+        font-size: 3rem;
+        height: 3rem;
+        width: 3rem;
+      }
+    }
+  }
+}

@@ -1,0 +1,46 @@
+.app-sidenav-menu {
+  padding-top: 0 !important;
+
+  &-item {
+    cursor: default;
+    border-left: 4px solid transparent;
+    transition: 0.2s all;
+    box-sizing: border-box;
+
+    &:hover {
+      background: rgba(0, 0, 0, 0.04);
+    }
+
+    &--active {
+      background: #00968836 !important;
+      border-left: 4px solid #009688;
+    }
+
+    &-text {
+      font-size: 1rem;
+      font-weight: 500;
+    }
+
+    .mat-mdc-list-item-unscoped-content {
+      display: flex;
+
+      mat-icon {
+        margin-right: 10px;
+      }
+    }
+  }
+
+  mat-expansion-panel {
+    box-shadow: none !important;
+    background-color: transparent;
+
+    mat-expansion-panel-header {
+      cursor: default !important;
+      padding: 0 1rem;
+
+      mat-icon {
+        margin-right: 10px;
+      }
+    }
+  }
+}

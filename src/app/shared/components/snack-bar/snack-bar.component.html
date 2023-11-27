@@ -1,0 +1,20 @@
+<div class="snack-bar-content">
+  <span matSnackBarLabel>
+    <span class="snack-bar-content-icon" [ngSwitch]="data.type">
+      <span *ngSwitchCase="'success'">
+        <mat-icon aria-hidden="false" aria-label="Close icon" fontIcon="done"></mat-icon>
+      </span>
+      <span *ngSwitchCase="'error'">
+        <mat-icon aria-hidden="false" aria-label="Close icon" fontIcon="error"></mat-icon>
+      </span>
+    </span>
+
+    {{ data.message }}
+  </span>
+
+  <span matSnackBarActions>
+    <button mat-button matSnackBarAction (click)="snackBarRef.dismissWithAction()">
+      <mat-icon aria-hidden="false" aria-label="Close icon" fontIcon="close"></mat-icon>
+    </button>
+  </span>
+</div>

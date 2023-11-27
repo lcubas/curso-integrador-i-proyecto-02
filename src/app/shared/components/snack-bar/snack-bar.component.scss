@@ -1,0 +1,56 @@
+.snack-bar {
+  .mdc-snackbar__surface {
+    background-color: transparent;
+  }
+
+  .mdc-snackbar__label {
+    color: #00000F;
+    display: flex;
+    align-items: center;
+
+    .snack-bar-content-icon {
+      margin-right: 1rem;
+      display: inline-flex;
+
+      > span {
+        display: inline-flex;
+      }
+    }
+  }
+
+  &--success {
+    .mdc-snackbar__surface {
+      background-color: #4caf50;
+    }
+
+    .mdc-snackbar__label {
+      color: #FFFFF0;
+    }
+
+    .mdc-snackbar__actions {
+      .mat-icon {
+        color: #FFFFF0;
+      }
+    }
+  }
+
+  &--error {
+    .mdc-snackbar__surface {
+      background-color: #f44336;
+    }
+
+    .mdc-snackbar__label {
+      color: #FFFFF0;
+    }
+
+    .mdc-snackbar__actions {
+      .mat-icon {
+        color: #FFFFF0;
+      }
+    }
+  }
+
+  &-content {
+    display: flex;
+  }
+}

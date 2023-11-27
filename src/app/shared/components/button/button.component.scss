@@ -1,0 +1,25 @@
+.app-button {
+  &.mat-basic {
+    background-color: #fff;
+  }
+
+  .mdc-button__label {
+    display: flex;
+    align-items: center;
+    padding: 0 2rem;
+
+    .mdc-circular-progress {
+      &--indeterminate {
+        right: 0;
+        position: absolute;
+        margin-left: .5rem;
+      }
+    }
+  }
+
+  &--small {
+    .mdc-button__label {
+      padding: .2rem .3rem;
+    }
+  }
+}

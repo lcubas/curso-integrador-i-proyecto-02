@@ -1,0 +1,70 @@
+/// Creates a map of hues to colors for a theme. This is used to define a theme palette in terms
+/// of the Material Design hues.
+/// @param {Map} $base-palette Map of hue keys to color values for the basis for this palette.
+/// @param {String | Number} $default Default hue for this palette.
+/// @param {String | Number} $lighter "lighter" hue for this palette.
+/// @param {String | Number} $darker "darker" hue for this palette.
+/// @param {String | Number} $text "text" hue for this palette.
+/// @returns {Map} A complete Angular Material theming palette.
+/// @function define-palette($base-palette, $default: 500, $lighter: 100, $darker: 700, $text: $default)
+
+
+@use '@angular/material' as mat;
+
+@include mat.core();
+
+$typography-config: mat.define-typography-config(
+  $headline-1: mat.define-typography-level(3rem, 3.5rem, 600),
+  $headline-2: mat.define-typography-level(3rem, 3.5rem, 600),
+  $headline-3: mat.define-typography-level(3rem, 3.5rem, 600),
+  $headline-4: mat.define-typography-level(3rem, 3.5rem, 600),
+  $headline-5: mat.define-typography-level(3rem, 3.5rem, 600),
+  $headline-6: mat.define-typography-level(2.5rem, 3rem, 600),
+);
+
+$color-accent: (
+  50 : #f0eeec,
+  100 : #d9d4d0,
+  200 : #bfb7b1,
+  300 : #a59a92,
+  400 : #92857a,
+  500 : #7f6f63,
+  600 : #77675b,
+  700 : #6c5c51,
+  800 : #625247,
+  900 : #4f4035,
+  A100 : #ffc7a2,
+  A200 : #ffa96f,
+  A400 : #ff8a3c,
+  A700 : #ff7b23,
+  contrast: (
+    50 : #000000,
+    100 : #000000,
+    200 : #000000,
+    300 : #000000,
+    400 : #000000,
+    500 : #ffffff,
+    600 : #ffffff,
+    700 : #ffffff,
+    800 : #ffffff,
+    900 : #ffffff,
+    A100 : #000000,
+    A200 : #000000,
+    A400 : #000000,
+    A700 : #000000,
+  )
+);
+$primary-palette: mat.define-palette(mat.$teal-palette, 500, 100, 900);
+$accent-palette: mat.define-palette($color-accent, 200, 700, 200);
+
+$theme: mat.define-light-theme((
+  color: (
+    primary: $primary-palette,
+    accent: $accent-palette,
+  ),
+  typography: $typography-config,
+));
+
+@include mat.core-theme($theme);
+@include mat.all-component-themes($theme);
+@include mat.typography-hierarchy($typography-config);

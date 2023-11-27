@@ -1,0 +1,21 @@
+<app-page-header icon="group">
+  <h2>Usuarios</h2>
+
+  <button mat-flat-button color="primary" routerLink="/usuarios/nuevo">
+    <mat-icon class="mr-2">group_add</mat-icon>
+    <span>Crear usuario</span>
+  </button>
+</app-page-header>
+
+<app-page-content>
+  <app-user-filters
+    (search)="onSearchFilter($event)"
+    (status)="onStatusChangeFilter($event)"
+  ></app-user-filters>
+  <app-users-table
+    [users]="users"
+    [isLoading]="isLoading"
+    [filters]="{ searchFilterValue, statusFilterValue }"
+    (toggleStatusAction)="onToggleStatusAction($event)"
+  ></app-users-table>
+</app-page-content>

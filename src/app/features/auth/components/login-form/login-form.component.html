@@ -1,0 +1,39 @@
+<mat-card class="form-card-container form-card-container--default">
+  <mat-card-content>
+    <form class="form" [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+      <h2 class="form-title">Iniciar sesión</h2>
+
+      <mat-form-field appearance="outline" class="full-width form-field">
+        <mat-label>Email</mat-label>
+        <input matInput formControlName="email" type="email" required />
+
+        <mat-error *ngIf="loginForm.controls['email'].hasError('required')">
+          El email es obligatorio
+        </mat-error>
+        <mat-error *ngIf="loginForm.controls['email'].hasError('email')">
+          El formato del email no es correcto
+        </mat-error>
+      </mat-form-field>
+
+      <mat-form-field appearance="outline" class="full-width form-field">
+        <mat-label>Contraseña</mat-label>
+        <input matInput formControlName="password" type="password" required />
+
+        <mat-error *ngIf="loginForm.controls['password'].hasError('required')">
+          La contraseña es obligatoria
+        </mat-error>
+      </mat-form-field>
+
+      <app-button
+        type="submit"
+        color="primary"
+        [loading]="isButtonSubmitLoading"
+        [disabled]="loginForm.invalid || isButtonSubmitLoading"
+      >
+        Iniciar sesión
+      </app-button>
+
+      <a mat-button [disabled]="isButtonSubmitLoading" href="#">Recuperar Contraseña</a>
+    </form>
+  </mat-card-content>
+</mat-card>

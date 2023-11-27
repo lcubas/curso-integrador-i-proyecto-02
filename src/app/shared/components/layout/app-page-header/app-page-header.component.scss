@@ -1,0 +1,31 @@
+.app-page-header {
+  top: 0;
+  gap: 1.5rem;
+  z-index: 9;
+  display: flex;
+  position: sticky;
+  background: white;
+  padding: 1rem 1.5rem;
+  border-bottom: 1px solid #ececec;
+  align-items: center;
+  justify-content: space-between;
+  box-shadow: 0 0 4px 2px #ececec;
+
+  &-title {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    height: 30px;
+    margin: 0;
+
+    h2 {
+      margin: 0;
+    }
+
+    mat-icon {
+      font-size: 35px;
+      width: 35px;
+      height: auto;
+    }
+  }
+}

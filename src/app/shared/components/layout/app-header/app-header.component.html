@@ -1,0 +1,27 @@
+<mat-toolbar class="app-header" color="primary">
+  <div class="app-header-title">
+    <button mat-icon-button color="accent" (click)="menuToggled.emit(true)">
+      <mat-icon>menu</mat-icon>
+    </button>
+
+    <h1>App clinica</h1>
+  </div>
+
+  <div class="app-header-user">
+    <div>
+      <span>
+        Hello {{ (currentLoggedUser$ | async)?.email }}
+      </span>
+
+      <button mat-icon-button [matMenuTriggerFor]="menu">
+        <mat-icon>person</mat-icon>
+      </button>
+    </div>
+
+    <mat-menu #menu="matMenu">
+      <button mat-menu-item (click)="logout()">
+        <span>Logout</span>
+      </button>
+    </mat-menu>
+  </div>
+</mat-toolbar>

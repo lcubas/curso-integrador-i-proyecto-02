@@ -1,0 +1,10 @@
+<div class="app-page-header">
+  <div class="app-page-header-title">
+    <mat-icon *ngIf="icon">
+      {{ icon }}
+    </mat-icon>
+    <ng-content select="h2"></ng-content>
+  </div>
+
+  <ng-content select="button"></ng-content>
+</div>

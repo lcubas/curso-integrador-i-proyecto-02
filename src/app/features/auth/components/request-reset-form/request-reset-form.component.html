@@ -1,0 +1,33 @@
+<mat-card class="form-card-container form-card-container--default">
+  <mat-card-content>
+    <form class="form" [formGroup]="requestResetForm" (ngSubmit)="onSubmit()">
+      <h2 class="form-title">Recuperar cuenta</h2>
+
+      <mat-form-field appearance="outline" class="form-field full-width">
+        <mat-label>Email</mat-label>
+        <input matInput formControlName="email" type="email" required />
+
+        <mat-error *ngIf="requestResetForm.controls['email'].hasError('required')">
+          El email es obligatorio
+        </mat-error>
+        <mat-error *ngIf="requestResetForm.controls['email'].hasError('email')">
+          El formato del email no es correcto
+        </mat-error>
+
+        <mat-hint class="form-hint-text">
+          Se enviará un mail a tu correo registrado con las instrucciones para recuperar tu cuenta
+        </mat-hint>
+      </mat-form-field>
+
+      <app-button
+        type="submit"
+        color="primary"
+        class="form-button"
+        [loading]="isButtonSubmitLoading"
+        [disabled]="requestResetForm.invalid || isButtonSubmitLoading"
+      >
+        Recuperar cuenta
+      </app-button>
+    </form>
+  </mat-card-content>
+</mat-card>

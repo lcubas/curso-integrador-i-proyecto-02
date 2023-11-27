@@ -1,0 +1,19 @@
+.app-header {
+  display: flex;
+  justify-content: space-between;
+
+  &-title {
+    display: flex;
+
+    mat-icon {
+      color: #FFF;
+    }
+  }
+
+  &-user {
+    span {
+      font-size: .6em;
+      font-weight: 400;
+    }
+  }
+}

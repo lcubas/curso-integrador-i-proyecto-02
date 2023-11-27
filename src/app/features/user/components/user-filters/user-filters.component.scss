@@ -1,0 +1,15 @@
+.app-user-filters {
+  &-wrapper {
+    display: flex;
+    align-items: center;
+
+    mat-form-field {
+      margin-right: 2rem;
+    }
+  }
+
+  &-search {
+    width: 100%;
+    max-width: 450px;
+  }
+}
