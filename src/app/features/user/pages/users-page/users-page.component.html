@@ -9,13 +9,12 @@
 
 <app-page-content>
   <app-user-filters
-    (search)="onSearchFilter($event)"
-    (status)="onStatusChangeFilter($event)"
+    (filters)="onFiltersChange($event)"
   ></app-user-filters>
   <app-users-table
     [users]="users"
     [isLoading]="isLoading"
-    [filters]="{ searchFilterValue, statusFilterValue }"
+    [filters]="filters"
     (toggleStatusAction)="onToggleStatusAction($event)"
   ></app-users-table>
 </app-page-content>

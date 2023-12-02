@@ -11,12 +11,7 @@ import {
 import { MatPaginator } from '@angular/material/paginator';
 import { MatTableDataSource } from '@angular/material/table';
 import { User } from '@app/features/user/services/user-api.service';
-import { StatusFilterValue } from '../user-filters/user-filters.component';
-
-type Filters = {
-  searchFilterValue: string;
-  statusFilterValue: StatusFilterValue;
-};
+import { Filters, StatusFilterValue } from '../user-filters/user-filters.component';
 
 @Component({
   selector: 'app-users-table',
@@ -46,6 +41,7 @@ export class UsersTableComponent implements AfterViewInit, OnChanges {
   ngOnChanges(changes: SimpleChanges) {
     if (changes['users']) {
       this.usersMatDataSource.data = changes['users'].currentValue;
+      this.usersMatDataSource.filter = JSON.stringify(this.filters);
     }
 
     if (changes['filters']) {
@@ -74,6 +70,6 @@ export class UsersTableComponent implements AfterViewInit, OnChanges {
 
   onClickToggleUser(user: User) {
     this.toggleStatusAction.emit(user)
-    this.usersMatDataSource.data = this.usersMatDataSource.data.filter((u) => u.isActive);
+    this.usersMatDataSource.filter = JSON.stringify(this.filters);
   }
 }

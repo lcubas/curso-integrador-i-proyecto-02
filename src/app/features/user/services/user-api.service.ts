@@ -73,14 +73,14 @@ const USER_LIST: User[] = [
     name: 'Ervin Howell',
     email: 'ehowell@email.com',
     phone: '010-692-6593',
-    isActive: true,
+    isActive: false,
   },
   {
     id: 6,
     name: 'Jhone Doe',
     email: 'jdoe@email.com',
     phone: '1-463-123-4447',
-    isActive: true,
+    isActive: false,
   },
   {
     id: 7,

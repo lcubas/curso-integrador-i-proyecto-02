@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { StatusFilterValue } from '../../components/user-filters/user-filters.component';
+import { Filters, StatusFilterValue } from '../../components/user-filters/user-filters.component';
 import { User, UserApiService } from '../../services/user-api.service';
 
 @Component({
@@ -12,6 +12,7 @@ export class UsersPageComponent {
   isLoading: boolean = false;
   searchFilterValue: string = '';
   statusFilterValue: StatusFilterValue = 'active';
+  filters: Filters = {} as Filters;
 
   constructor(private readonly _userApiService: UserApiService) {
     this.isLoading = true;
@@ -29,24 +30,28 @@ export class UsersPageComponent {
     });
   }
 
-  onSearchFilter(searchValue: string) {
-    this.searchFilterValue = searchValue;
-  }
+  // onSearchFilter(searchValue: string) {
+  //   this.searchFilterValue = searchValue;
+  // }
 
-  onStatusChangeFilter(statusValue: StatusFilterValue) {
-    this.statusFilterValue = statusValue;
-  }
+  // onStatusChangeFilter(statusValue: StatusFilterValue) {
+  //   this.statusFilterValue = statusValue;
+  // }
 
   onToggleStatusAction(user: User) {
     // this.isLoading = true;
 
-    // this._userApiService.toggleStatus(user.id).subscribe({
-    //   next: () => {
-    //     this.isLoading = false;
-    //   },
-    //   error: (err) => {
-    //     console.error(err);
-    //   },
-    // });
+    this._userApiService.toggleStatus(user.id).subscribe({
+      next: () => {
+        // this.isLoading = false;
+      },
+      error: (err) => {
+        console.error(err);
+      },
+    });
+  }
+
+  onFiltersChange(filters: Filters) {
+    this.filters = filters;
   }
 }
