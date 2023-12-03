@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
-import { Filters, StatusFilterValue } from '../../components/user-filters/user-filters.component';
 import { User, UserApiService } from '../../services/user-api.service';
+import { Filters } from '../../components/user-filters/user-filters.component';
+import { SnackBarNotifierService } from '@app/shared/services/snack-bar-notifier.service';
 
 @Component({
   selector: 'app-user-index-page',
@@ -10,48 +11,47 @@ import { User, UserApiService } from '../../services/user-api.service';
 export class UsersPageComponent {
   users: User[] = [];
   isLoading: boolean = false;
-  searchFilterValue: string = '';
-  statusFilterValue: StatusFilterValue = 'active';
-  filters: Filters = {} as Filters;
+  filters: Filters = {
+    searchFilterValue: '',
+    statusFilterValue: 'active',
+  } as Filters;
 
-  constructor(private readonly _userApiService: UserApiService) {
+  constructor(
+    private readonly _userApiService: UserApiService,
+    private readonly _snackbarNotifier: SnackBarNotifierService
+  ) {
     this.isLoading = true;
-
-    this._userApiService.getUsers().subscribe({
-      next: (users) => {
-        console.log(users);
-        this.users = users;
-        this.isLoading = false;
-      },
-      error: (err) => {
-        console.error(err);
-        this.isLoading = false;
-      },
-    });
+    this._loadUsers();
   }
 
-  // onSearchFilter(searchValue: string) {
-  //   this.searchFilterValue = searchValue;
-  // }
-
-  // onStatusChangeFilter(statusValue: StatusFilterValue) {
-  //   this.statusFilterValue = statusValue;
-  // }
-
   onToggleStatusAction(user: User) {
-    // this.isLoading = true;
-
     this._userApiService.toggleStatus(user.id).subscribe({
       next: () => {
-        // this.isLoading = false;
+        this._snackbarNotifier.open('Usuario deshabilitado', 'success');
       },
       error: (err) => {
         console.error(err);
+        this._snackbarNotifier.open('Hubo un error al deshabilitar usuario', 'error');
+        this._loadUsers();
       },
     });
   }
 
   onFiltersChange(filters: Filters) {
-    this.filters = filters;
+    this.filters = { ...filters };
+  }
+
+  private _loadUsers() {
+    this.isLoading = true;
+
+    this._userApiService.getUsers().subscribe({
+      next: (users) => {
+        this.users = users;
+        this.isLoading = false;
+      },
+      error: (err) => {
+        this.isLoading = false;
+      },
+    });
   }
 }

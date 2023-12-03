@@ -17,16 +17,18 @@ body {
   display: flex;
   flex-direction: column;
   justify-content: center;
+  padding: 1rem 2rem;
 
   &-title {
     text-align: center;
   }
 
   &-field {
-    margin-bottom: 1.5rem;
+    width: 100%;
+    margin-bottom: 1rem;
   }
 
-  &-card-container {
+  &-container {
     margin: auto;
 
     &--default {
@@ -40,6 +42,29 @@ body {
 
   [type="submit"] {
     margin: auto;
+  }
+
+  &--large {
+    max-width: 750px;
+  }
+
+  &-card {
+    &-container {
+      margin: auto;
+
+      &--default {
+        max-width: 450px;
+      }
+
+      &--large {
+        max-width: 650px;
+      }
+    }
+  }
+
+  &-group {
+    gap: 1rem;
+    display: flex;
   }
 }
 

@@ -15,15 +15,13 @@ export type Filters = {
   styleUrls: ['./user-filters.component.scss'],
 })
 export class UserFiltersComponent {
-  initialFilters: Filters = {
+  filtersValue: Filters = {
     searchFilterValue: '',
     statusFilterValue: 'active',
   };
 
   initialStatus: boolean = true;
 
-  @Output() status = new EventEmitter<StatusFilterValue>();
-  @Output() search = new EventEmitter<string>();
   @Output() filters = new EventEmitter<Filters>();
 
   private readonly _searchUpdated: Subject<string> = new Subject<string>();
@@ -35,9 +33,8 @@ export class UserFiltersComponent {
         distinctUntilChanged()
       )
       .subscribe((value) => {
-        this.initialFilters.searchFilterValue = value;
-        this.search.emit(value);
-        this.filters.emit(this.initialFilters);
+        this.filtersValue.searchFilterValue = value;
+        this.filters.emit(this.filtersValue);
       });
   }
 
@@ -50,8 +47,7 @@ export class UserFiltersComponent {
   }
 
   onStatusChange(value: boolean) {
-    const filterValue = value ? 'active' : 'inactive';
-    this.status.emit(filterValue)
-    this.initialFilters.statusFilterValue = filterValue;
+    this.filtersValue.statusFilterValue = value ? 'active' : 'inactive';
+    this.filters.emit(this.filtersValue);
   }
 }

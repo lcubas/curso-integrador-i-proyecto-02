@@ -31,6 +31,16 @@
       background: whitesmoke;
     }
 
+    &--disabled {
+      td {
+        opacity: 0.5;
+
+        &:last-child {
+          opacity: 1;
+        }
+      }
+    }
+
     td {
       max-height: 52px;
     }

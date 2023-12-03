@@ -84,12 +84,15 @@
     <tr
       mat-row
       *matRowDef="let row; columns: displayedColumns"
-      class="app-users-table-row"
+      [ngClass]="{
+        'app-users-table-row': true,
+        'app-users-table-row--disabled': !row.isActive
+      }"
     ></tr>
   </table>
 
   <mat-paginator
-    [pageSizeOptions]="[5, 10, 25]"
+    [pageSizeOptions]="[8, 16, 24]"
     aria-label="Select page of users"
   ></mat-paginator>
 </div>

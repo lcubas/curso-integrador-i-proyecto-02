@@ -3,7 +3,7 @@
     <form class="form" [formGroup]="loginForm" (ngSubmit)="onSubmit()">
       <h2 class="form-title">Iniciar sesión</h2>
 
-      <mat-form-field appearance="outline" class="full-width form-field">
+      <mat-form-field class="form-field">
         <mat-label>Email</mat-label>
         <input matInput formControlName="email" type="email" required />
 
@@ -15,7 +15,7 @@
         </mat-error>
       </mat-form-field>
 
-      <mat-form-field appearance="outline" class="full-width form-field">
+      <mat-form-field class="form-field">
         <mat-label>Contraseña</mat-label>
         <input matInput formControlName="password" type="password" required />
 
